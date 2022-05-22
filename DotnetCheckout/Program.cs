@@ -1,6 +1,13 @@
+using DotnetCheckout.Contracts;
+using DotnetCheckout.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Add as a singleton because it has internal state.
+// A real implementation just be a service with a data layer for persistence.
+builder.Services.AddSingleton<IBasketManager, BasketManager>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
